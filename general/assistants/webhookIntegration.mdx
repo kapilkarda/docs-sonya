@@ -1,12 +1,12 @@
 ---
 title: Webhook Integration
-description: "This document explains how to configure and receive webhooks from the **QCall** platform. A webhook lets your Bolify assistant forward collected call information to your own server or any 3rd-party service (CRM, Zapier, Make, your API, Google Sheets, etc.) in real time."
+description: "This document explains how to configure and receive webhooks from the **AI** platform. A webhook lets your AI assistant forward collected call information to your own server or any 3rd-party service (CRM, Zapier, Make, your API, Google Sheets, etc.) in real time."
 ---
 
 
 ## 1. Overview
 
-Bolify supports **two webhook trigger modes**. You configure them from the **Tools** section of your assistant inside the Bolify Dashboard.
+AI supports **two webhook trigger modes**. You configure them from the **Tools** section of your assistant inside the AI Dashboard.
 
 | Trigger | Fires When | Typical Use Case |
 |---------|------------|------------------|
@@ -21,7 +21,7 @@ This guide focuses on the **End-of-Call Webhook** — the most common client int
 
 ```
 ┌───────────┐     1. Voice Call     ┌──────────────┐
-│  Caller   │ ───────────────────► │ Bolify Agent  │
+│  Caller   │ ───────────────────► │ AI Agent  │
 └───────────┘                       └──────┬───────┘
                                            │ 2. Call Ends
                                            ▼
@@ -44,14 +44,14 @@ This guide focuses on the **End-of-Call Webhook** — the most common client int
 
 **Behind the scenes:**
 1. The assistant completes the call.
-2. Bolify takes the full transcript + collected context.
+2. AI takes the full transcript + collected context.
 3. The AI extracts every **Body Parameter** value using strict rules (never invents data, only uses exact words from the user/transcript).
-4. Bolify sends an HTTP request (method of your choice) to your configured URL with headers, query parameters, and body.
-5. Your server responds. The response status + body is logged in the Bolify delivery history for audit.
+4. AI sends an HTTP request (method of your choice) to your configured URL with headers, query parameters, and body.
+5. Your server responds. The response status + body is logged in the AI delivery history for audit.
 
 ---
 
-## 3. Configuring the Webhook in the Bolify Dashboard
+## 3. Configuring the Webhook in the AI Dashboard
 
 Open **Dashboard → Assistants → (select your assistant) → Tools → + Add Webhook**. You'll see the following fields:
 
@@ -64,7 +64,7 @@ Open **Dashboard → Assistants → (select your assistant) → Tools → + Add 
 | **Enable Body** | Toggle **ON** to send a JSON body built from the Body Parameters. |
 | **Headers** | List of `Name` / `Value` pairs. Always include `Content-Type: application/json` and an `Authorization` header for security. |
 | **Query Parameters** | Key/value pairs appended to the URL. |
-| **Body Parameters** | The fields you want Bolify to send in the request body. Each parameter has: `Identifier`, `Data Type`, `Required` flag, `Description`, `Value`. |
+| **Body Parameters** | The fields you want AI to send in the request body. Each parameter has: `Identifier`, `Data Type`, `Required` flag, `Description`, `Value`. |
 
 ### Body Parameter fields (each row)
 
@@ -74,7 +74,7 @@ Open **Dashboard → Assistants → (select your assistant) → Tools → + Add 
 | **Data Type** | `string`, `number`, or `boolean`. |
 | **Required** | Turn ON if this field must be present on your side. |
 | **Description** | Short hint telling the AI what to extract (e.g. "Caller's first name"). Be specific — the AI uses this. |
-| **Value** | Leave blank. Bolify will automatically fill this from the call transcript when the call ends. |
+| **Value** | Leave blank. AI will automatically fill this from the call transcript when the call ends. |
 
 ---
 
@@ -102,7 +102,7 @@ Configure the following Body Parameters inside your webhook tool to receive full
 | `call_summary` | string | yes | Short summary of the conversation |
 | `recording_url` | string | no | URL of the call recording |
 
-**Webhook URL example:** `https://your-domain.com/api/qcall/call-report`
+**Webhook URL example:** `https://your-domain.com/api/call-report`
 **Method:** `POST`
 **Trigger on Call End:** ON
 **Enable Trigger:** ON
@@ -118,11 +118,11 @@ Configure the following Body Parameters inside your webhook tool to receive full
 
 ## 5. Example: The Payload Your Server Will Receive
 
-When the call ends, Bolify sends a request like this to the URL you configured:
+When the call ends, AI sends a request like this to the URL you configured:
 
 **Request**
 ```
-POST /api/qcall/call-report HTTP/1.1
+POST /api/call-report HTTP/1.1
 Host: your-domain.com
 Content-Type: application/json
 Authorization: Bearer YOUR_API_KEY
@@ -147,7 +147,7 @@ Authorization: Bearer YOUR_API_KEY
   "sentiment_analysis": "Positive",
   "call_outcome": "Order Placed",
   "call_summary": "Customer confirmed order of 2 premium wireless earbuds for delivery to Green Park. Payment on delivery agreed.",
-  "recording_url": "https://cdn.qcall.ai/recordings/cs_abc123.mp3"
+  "recording_url": "https://cdn.xyz.com/recordings/cs_abc123.mp3"
 }
 ```
 
@@ -155,7 +155,7 @@ Authorization: Bearer YOUR_API_KEY
 
 ## 6. Expected Response from Your Server
 
-Your server should respond with **HTTP 200 or 201** and a JSON body. Non-2xx responses are logged as failures in QCall's delivery history.
+Your server should respond with **HTTP 200 or 201** and a JSON body. Non-2xx responses are logged as failures in AI's delivery history.
 
 **Example response**
 ```json
@@ -185,7 +185,7 @@ Your server should respond with **HTTP 200 or 201** and a JSON body. Non-2xx res
 
 ## 8. Content Types Supported
 
-Bolify automatically serializes the body based on the `Content-Type` header you set:
+AI automatically serializes the body based on the `Content-Type` header you set:
 
 | Content-Type | Body Sent As |
 |--------------|--------------|
@@ -200,11 +200,11 @@ For **GET** / **DELETE** requests, the body is omitted automatically — use **Q
 ## 9. Testing Your Integration
 
 1. **Build a test receiver** — either a simple Express server or use [webhook.site](https://webhook.site).
-2. **Use the webhook.site URL** as the Webhook URL in the Bolify Dashboard while testing:
+2. **Use the webhook.site URL** as the Webhook URL in the AI Dashboard while testing:
    ```
    https://webhook.site/<your-unique-id>
    ```
-3. **Place a test call** through the Bolify dashboard or playground.
+3. **Place a test call** through the AI dashboard or playground.
 4. **End the call** — the webhook should fire within a few seconds.
 5. **Verify** the received payload matches the Body Parameters you configured.
 
@@ -215,8 +215,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-app.post("/api/qcall/call-report", (req, res) => {
-  console.log("Bolify webhook received:", req.body);
+app.post("/api/call-report", (req, res) => {
+  console.log("AI webhook received:", req.body);
 
   // Validate auth
   const auth = req.headers.authorization;
@@ -248,7 +248,7 @@ Yes. Any Body Parameter you add with a clear Description will be extracted by th
 Not natively — every call for that assistant fires the webhook. Filter on your side using `call_outcome` or `sentiment_analysis`.
 
 **Q. Where can I see webhook delivery history?**
-Contact your Bolify account manager for access to the delivery log for your workspace.
+Contact your AI account manager for access to the delivery log for your workspace.
 
 ---
 
@@ -267,10 +267,10 @@ Contact your Bolify account manager for access to the delivery log for your work
 
 ## 12. Support
 
-For issues, error codes, or custom integrations, reach out to your Bolify support contact with:
+For issues, error codes, or custom integrations, reach out to your AI support contact with:
 - Assistant name
 - Approximate call timestamp (with timezone)
 - Your server's response code + body
 
-We will match it against QCall's delivery log for debugging.
+We will match it against AI's delivery log for debugging.
  

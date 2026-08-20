@@ -1,12 +1,12 @@
 ---
 title: Web Chat Widget
-description: "This page describes how to embed and configure the Bolify AI chat widget on your website"
+description: "This page describes how to embed and configure the Ai chat widget on your website"
 icon: "globe"
 ---
 
 ## Web Chat Widget
 
-Bolify AI provides a customizable chat widget that you can embed on your website to engage visitors in real-time AI-powered conversations. The widget connects directly to your configured assistant, providing instant responses to visitor queries.
+Ai provides a customizable chat widget that you can embed on your website to engage visitors in real-time AI-powered conversations. The widget connects directly to your configured assistant, providing instant responses to visitor queries.
 
 ## Widget Modes
 
@@ -44,7 +44,7 @@ Add the following script to your website's HTML:
 <script>
   (function(w, d, s, o) {
     var js = d.createElement(s);
-    js.src = 'https://widget.qcall.ai/widget.js';
+    js.src = 'https://widget.domain.ai/widget.js';
     js.setAttribute('data-api-key', 'YOUR_API_KEY');
     js.setAttribute('data-mode', 'floating');
     js.setAttribute('data-position', 'bottom-right');
@@ -56,15 +56,15 @@ Add the following script to your website's HTML:
 #### Embedded Mode
 
 ```html
-<div id="qcall-chat-container" style="width: 400px; height: 600px;"></div>
+<div id="widget-chat-container" style="width: 400px; height: 600px;"></div>
 
 <script>
   (function(w, d, s, o) {
     var js = d.createElement(s);
-    js.src = 'https://widget.qcall.ai/widget.js';
+    js.src = 'https://widget.domain.ai/widget.js';
     js.setAttribute('data-api-key', 'YOUR_API_KEY');
     js.setAttribute('data-mode', 'embedded');
-    js.setAttribute('data-container-id', 'qcall-chat-container');
+    js.setAttribute('data-container-id', 'widget-chat-container');
     d.head.appendChild(js);
   })(window, document, 'script');
 </script>

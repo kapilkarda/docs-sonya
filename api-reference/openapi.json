@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Bolify Ai API",
+    "title": "Ai API",
     "description": "A sample API that uses a campaign store as an example to demonstrate features in the OpenAPI specification",
     "license": {
       "name": "MIT"

@@ -1,17 +1,17 @@
 ---
 title: Zeplo Template Configuration
-description: "Learn how to configure Zeplo WhatsApp templates, parameter hints, and send messages from Bolify AI assistants."
+description: "Learn how to configure Zeplo WhatsApp templates, parameter hints, and send messages from Ai assistants."
 ---
 
-## Zeplo Template Configuration in Bolify AI
+## Zeplo Template Configuration in Ai
 
-Once your Zeplo credentials are configured (see [Zeplo Setup Guide](/general/integrations/zeploSetup)), you can use WhatsApp templates in your Bolify AI assistants to send automated messages.
+Once your Zeplo credentials are configured (see [Zeplo Setup Guide](/general/integrations/zeploSetup)), you can use WhatsApp templates in your Ai assistants to send automated messages.
 
 ---
 
 ### How Templates Work
 
-Zeplo templates are WhatsApp Business API message templates that contain placeholders like `{{1}}`, `{{2}}`, etc. When Bolify AI sends a message, these placeholders are filled with real values extracted from the call conversation.
+Zeplo templates are WhatsApp Business API message templates that contain placeholders like `{{1}}`, `{{2}}`, etc. When Ai sends a message, these placeholders are filled with real values extracted from the call conversation.
 
 A typical template structure:
 
@@ -79,7 +79,7 @@ Check the **Zeplo (WhatsApp)** checkbox. This reveals the full Zeplo configurati
 
 ### Step 4: Fill in Parameter Hints
 
-After selecting a template, Bolify AI automatically parses all placeholders and displays **Parameter Hints** input fields. These hints tell the AI what each placeholder represents so it can extract the correct value from the conversation.
+After selecting a template, Ai automatically parses all placeholders and displays **Parameter Hints** input fields. These hints tell the AI what each placeholder represents so it can extract the correct value from the conversation.
 
 For example, if your template body is:
 ```
@@ -142,11 +142,11 @@ Before deploying, test your template configuration:
 
 ### Authentication (OTP) Templates
 
-Authentication templates have special handling. Meta requires the **same OTP value** to appear in both the body and button parameters. Bolify AI handles this automatically:
+Authentication templates have special handling. Meta requires the **same OTP value** to appear in both the body and button parameters. Ai handles this automatically:
 
 1. When you select an **Authentication** category template, you'll see a warning banner.
 2. You only need to provide **one hint** for the OTP value.
-3. Bolify AI will automatically replicate the OTP to all body and button placeholders at send time.
+3. Ai will automatically replicate the OTP to all body and button placeholders at send time.
 
 The test modal also simplifies OTP testing — enter the code once, and it's applied to all slots.
 
@@ -194,7 +194,7 @@ Each entry in `parameter_slots` has this structure:
 
 ### Tracking Zeplo Message Status
 
-After sending messages through Bolify AI campaigns, you can track the Zeplo delivery status in multiple places:
+After sending messages through Ai campaigns, you can track the Zeplo delivery status in multiple places:
 
 - **Campaign Details** — Shows `is_zeplo_sent` status per contact
 - **Call Logs** — Displays whether a WhatsApp message was sent for each call
@@ -216,7 +216,7 @@ After sending messages through Bolify AI campaigns, you can track the Zeplo deli
 
 ### API Endpoints Used
 
-Bolify AI uses the following backend endpoints to communicate with Zeplo:
+Ai uses the following backend endpoints to communicate with Zeplo:
 
 | Endpoint | Method | Description |
 |---|---|---|
