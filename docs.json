@@ -17,8 +17,7 @@
             "group": "Get Started",
             "pages": [
               "introduction",
-              "general/dashboard",
-              "ai-features"
+              "general/dashboard"
             ]
           },
           {
