@@ -130,10 +130,10 @@
     },
     "/user/listAssistant": {
       "get": {
-        "description": "Returns all assistants from the system that the user has access to",
+        "description": "Returns all agents from the system that the user has access to",
         "responses": {
           "200": {
-            "description": "Assistant response",
+            "description": "Agent response",
             "content": {
               "application/json": {
                 "schema": {
@@ -160,9 +160,9 @@
     },
     "/user/createAssistant": {
       "post": {
-        "description": "Creates a new Assistant",
+        "description": "Creates a new Agent",
         "requestBody": {
-          "description": "Assistant to add",
+          "description": "Agent to add",
           "content": {
             "application/json": {
               "schema": {
@@ -174,7 +174,7 @@
         },
         "responses": {
           "200": {
-            "description": "Assistant response",
+            "description": "Agent response",
             "content": {
               "application/json": {
                 "schema": {
@@ -198,7 +198,7 @@
     },
     "/user/updateAssistant?id={id}": {
       "put": {
-        "description": "Update a Assistant",
+        "description": "Update an Agent",
         "parameters": [
           {
             "name": "id",
@@ -207,11 +207,11 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the assistant to update"
+            "description": "The ID of the agent to update"
           }
         ],
         "requestBody": {
-          "description": "Assistant to update",
+          "description": "Agent to update",
           "content": {
             "application/json": {
               "schema": {
@@ -223,7 +223,7 @@
         },
         "responses": {
           "200": {
-            "description": "Assistant response",
+            "description": "Agent response",
             "content": {
               "application/json": {
                 "schema": {
@@ -247,12 +247,12 @@
     },
     "/user/deleteassistant?id={id}": {
       "delete": {
-        "description": "Deletes a single assistant based on the ID supplied",
+        "description": "Deletes a single agent based on the ID supplied",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of assistant to delete",
+            "description": "ID of agent to delete",
             "required": true,
             "schema": {
               "type": "string"
@@ -261,7 +261,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Assistant deleted",
+            "description": "Agent deleted",
             "content": {}
           },
           "400": {
@@ -428,10 +428,10 @@
     },
     "/tag/list": {
       "get": {
-        "description": "Returns all Tags from the system that the user has access to",
+        "description": "Returns all Groups from the system that the user has access to",
         "responses": {
           "200": {
-            "description": "Tag response",
+            "description": "Group response",
             "content": {
               "application/json": {
                 "schema": {
@@ -458,9 +458,9 @@
     },
     "/tag/create": {
       "post": {
-        "description": "Creates a new tag",
+        "description": "Creates a new group",
         "requestBody": {
-          "description": "Tag to add",
+          "description": "Group to add",
           "content": {
             "application/json": {
               "schema": {
@@ -472,7 +472,7 @@
         },
         "responses": {
           "200": {
-            "description": "Tag response",
+            "description": "Group response",
             "content": {
               "application/json": {
                 "schema": {
@@ -496,7 +496,7 @@
     },
     "/tag/update?id={id}": {
       "put": {
-        "description": "Update a tag",
+        "description": "Update a group",
         "parameters": [
           {
             "name": "id",
@@ -505,11 +505,11 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the tag to update"
+            "description": "The ID of the group to update"
           }
         ],
         "requestBody": {
-          "description": "Tag to update",
+          "description": "Group to update",
           "content": {
             "application/json": {
               "schema": {
@@ -521,7 +521,7 @@
         },
         "responses": {
           "200": {
-            "description": "Tag response",
+            "description": "Group response",
             "content": {
               "application/json": {
                 "schema": {
@@ -545,12 +545,12 @@
     },
     "/tag/delete?id={id}": {
       "delete": {
-        "description": "Deletes a single tag based on the ID supplied",
+        "description": "Deletes a single group based on the ID supplied",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of tag to delete",
+            "description": "ID of group to delete",
             "required": true,
             "schema": {
               "type": "string"
@@ -559,7 +559,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Tag deleted",
+            "description": "Group deleted",
             "content": {}
           },
           "400": {
@@ -577,7 +577,7 @@
     },
     "/tag/contact/list?id={id}": {
       "post": {
-        "description": "Returns all tag's contacts from the system that the user has access to",
+        "description": "Returns all group's contacts from the system that the user has access to",
         "parameters": [
           {
             "name": "id",
@@ -586,12 +586,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the tag to get contacts"
+            "description": "The ID of the group to get contacts"
           }
         ],
         "responses": {
           "200": {
-            "description": "Tag contacts response",
+            "description": "Group contacts response",
             "content": {
               "application/json": {
                 "schema": {
@@ -618,7 +618,7 @@
     },
     "/tag/contact/bulk-upload?id={id}": {
       "post": {
-        "description": "Bulk upload tag's contacts",
+        "description": "Bulk upload group's contacts",
         "parameters": [
           {
             "name": "id",
@@ -627,7 +627,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the tag to get contacts"
+            "description": "The ID of the group to get contacts"
           }
         ],
         "requestBody": {
@@ -689,7 +689,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the Tag to create contact"
+            "description": "The ID of the Group to create contact"
           }
         ],
         "requestBody": {
@@ -735,7 +735,7 @@
     },
     "/tag/contact/update?id={id}": {
       "put": {
-        "description": "Update Tag's Contact",
+        "description": "Update Group's Contact",
         "parameters": [
           {
             "name": "id",
@@ -744,7 +744,7 @@
             "schema": {
               "type": "string"
             },
-            "description": "The ID of the tag's contact to update contact"
+            "description": "The ID of the group's contact to update contact"
           }
         ],
         "requestBody": {
@@ -760,7 +760,7 @@
         },
         "responses": {
           "200": {
-            "description": "Update tag's contact response",
+            "description": "Update group's contact response",
             "content": {
               "application/json": {
                 "schema": {
@@ -790,12 +790,12 @@
     },
     "/tag/contact/delete?id={id}": {
       "delete": {
-        "description": "Delete a single Tag's contact based on the ID supplied",
+        "description": "Delete a single Group's contact based on the ID supplied",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of tag's contact to delete",
+            "description": "ID of group's contact to delete",
             "required": true,
             "schema": {
               "type": "string"
@@ -899,7 +899,7 @@
             "type": "string"
           },
           "assistant_name": {
-            "description": "The name of the assistant",
+            "description": "The name of the agent",
             "type": "string"
           },
           "contact_name": {
@@ -1003,11 +1003,11 @@
             "type": "string"
           },
           "assistant_id": {
-            "description": "The id of the assistant",
+            "description": "The id of the agent",
             "type": "string"
           },
           "segment_id": {
-            "description": "The id of the tag",
+            "description": "The id of the group",
             "type": "string"
           },
           "dialer_id": {
@@ -1068,7 +1068,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "description": "Type of assistant ",
+            "description": "Type of agent ",
             "type": "string",
             "enum": [
               "inbound",
@@ -1076,7 +1076,7 @@
             ]
           },
           "language": {
-            "description": "Language of the assistant. Supported values: en (English), de (German), hi (Hindi), es (Spanish), fr (French), it (Italian), ar-kw (Arabic Kuwait), gu (Gujarati), bn (Bengali), te (Telugu India), kn (Kannada India), ta (Tamil India), mr (Marathi).",
+            "description": "Language of the agent. Supported values: en (English), de (German), hi (Hindi), es (Spanish), fr (French), it (Italian), ar-kw (Arabic Kuwait), gu (Gujarati), bn (Bengali), te (Telugu India), kn (Kannada India), ta (Tamil India), mr (Marathi).",
             "type": "string",
             "enum": [
               "en",
@@ -1095,7 +1095,7 @@
             ]
           },
           "name": {
-            "description": "The name of the assistant",
+            "description": "The name of the agent",
             "type": "string"
           },
           "company_name": {
@@ -1136,7 +1136,7 @@
                 },
                 "say": {
                   "type": "string",
-                  "description": "What the assistant should say before executing the action"
+                  "description": "What the agent should say before executing the action"
                 },
                 "length": {
                   "type": "integer",
@@ -1227,11 +1227,11 @@
             }
           },
           "goal": {
-            "description": "The goal of the assistant",
+            "description": "The goal of the agent",
             "type": "string"
           },
           "start_speech": {
-            "description": "Start speech of the assistant",
+            "description": "Start speech of the agent",
             "type": "string"
           },
           "voice_id": {
@@ -1247,7 +1247,7 @@
             "type": "string"
           },
           "script": {
-            "description": "Script of the assistant",
+            "description": "Script of the agent",
             "type": "string"
           },
           "knowledge_base_Id": {
@@ -1318,7 +1318,7 @@
             "enum": ["umm", "uhh"]
           },
           "assistant_image": {
-            "description": "Assistant image url",
+            "description": "Agent image url",
             "type": "string",
             "enum": ["https://precallai.s3.ap-south-1.amazonaws.com/assistant_profile/1.jpeg", "https://precallai.s3.ap-south-1.amazonaws.com/assistant_profile/1.jpeg", "https://precallai.s3.ap-south-1.amazonaws.com/assistant_profile/3.jpeg", "https://precallai.s3.ap-south-1.amazonaws.com/assistant_profile/4.jpeg", "https://precallai.s3.ap-south-1.amazonaws.com/assistant_profile/5.jpeg"]
           },
@@ -1352,7 +1352,7 @@
             "enum": ["If a user explicitly expresses that they no longer wish to receive calls, such as by saying 'Don't call me again,' 'I'm not interested,' or any similar phrase indicating that they want to opt out of future communications, please trigger the 'optOut' function and inform the user that they will no longer be contacted for calls."]
           },
           "is_wait_start_speech": {
-            "description": "For assistant typle is ```outbound``` then you can enable or disable",
+            "description": "For agent typle is ```outbound``` then you can enable or disable",
             "type": "boolean",
             "enum": [true, false]
           },
@@ -1508,11 +1508,11 @@
             "type": "number"
           },
           "end_call_message": {
-            "description": "Message spoken by the assistant at the end of the call",
+            "description": "Message spoken by the agent at the end of the call",
             "type": "string"
           },
           "wait_max_interval": {
-            "description": "Maximum wait interval in milliseconds before the assistant speaks again",
+            "description": "Maximum wait interval in milliseconds before the agent speaks again",
             "type": "number"
           },
           "set_transcription_start_time": {
@@ -1520,7 +1520,7 @@
             "type": "number"
           },
           "widget_config": {
-            "description": "Widget configuration for embedding the assistant on a website",
+            "description": "Widget configuration for embedding the agent on a website",
             "type": "object",
             "properties": {
               "mode": {
@@ -1772,7 +1772,7 @@
             "type": "array"
           },
           "assistant_id": {
-            "description": "Assistant",
+            "description": "Agent",
             "type": "string"
           },
           "dialer_id": {

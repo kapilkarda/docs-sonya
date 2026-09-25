@@ -1,12 +1,12 @@
 ---
 title: Webhook Integration
-description: "This document explains how to configure and receive webhooks from the **AI** platform. A webhook lets your AI assistant forward collected call information to your own server or any 3rd-party service (CRM, Zapier, Make, your API, Google Sheets, etc.) in real time."
+description: "This document explains how to configure and receive webhooks from the **AI** platform. A webhook lets your AI agent forward collected call information to your own server or any 3rd-party service (CRM, Zapier, Make, your API, Google Sheets, etc.) in real time."
 ---
 
 
 ## 1. Overview
 
-AI supports **two webhook trigger modes**. You configure them from the **Tools** section of your assistant inside the AI Dashboard.
+AI supports **two webhook trigger modes**. You configure them from the **Tools** section of your agent inside the AI Dashboard.
 
 | Trigger | Fires When | Typical Use Case |
 |---------|------------|------------------|
@@ -43,7 +43,7 @@ This guide focuses on the **End-of-Call Webhook** — the most common client int
 ```
 
 **Behind the scenes:**
-1. The assistant completes the call.
+1. The agent completes the call.
 2. AI takes the full transcript + collected context.
 3. The AI extracts every **Body Parameter** value using strict rules (never invents data, only uses exact words from the user/transcript).
 4. AI sends an HTTP request (method of your choice) to your configured URL with headers, query parameters, and body.
@@ -53,7 +53,7 @@ This guide focuses on the **End-of-Call Webhook** — the most common client int
 
 ## 3. Configuring the Webhook in the AI Dashboard
 
-Open **Dashboard → Assistants → (select your assistant) → Tools → + Add Webhook**. You'll see the following fields:
+Open **Dashboard → Agents → (select your agent) → Tools → + Add Webhook**. You'll see the following fields:
 
 | Field (UI label) | Description |
 |------------------|-------------|
@@ -236,7 +236,7 @@ app.listen(3000, () => console.log("Listening on :3000"));
 ## 10. Frequently Asked Questions
 
 **Q. Can I receive multiple webhooks per call?**
-Yes. Add multiple webhook tools under the same assistant. Each one has its own URL, method, and parameter set.
+Yes. Add multiple webhook tools under the same agent. Each one has its own URL, method, and parameter set.
 
 **Q. What happens to missing values?**
 The AI will set the field to an empty string `""` rather than invent data. Your server should handle empty strings gracefully.
@@ -245,7 +245,7 @@ The AI will set the field to an empty string `""` rather than invent data. Your 
 Yes. Any Body Parameter you add with a clear Description will be extracted by the AI. Always use lowercase snake_case identifiers.
 
 **Q. Can I filter which calls trigger the webhook?**
-Not natively — every call for that assistant fires the webhook. Filter on your side using `call_outcome` or `sentiment_analysis`.
+Not natively — every call for that agent fires the webhook. Filter on your side using `call_outcome` or `sentiment_analysis`.
 
 **Q. Where can I see webhook delivery history?**
 Contact your AI account manager for access to the delivery log for your workspace.
@@ -268,7 +268,7 @@ Contact your AI account manager for access to the delivery log for your workspac
 ## 12. Support
 
 For issues, error codes, or custom integrations, reach out to your AI support contact with:
-- Assistant name
+- Agent name
 - Approximate call timestamp (with timezone)
 - Your server's response code + body
 

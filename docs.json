@@ -26,7 +26,7 @@
               "general/contacts/contacts",
               "general/contacts/companies",
               {
-                "group": "Tags",
+                "group": "Groups",
                 "pages": [
                   "general/contacts/tagList/introduction",
                   "general/contacts/tagList/addContacts",
@@ -39,11 +39,11 @@
             "group": "Call Platforms",
             "pages": [
               {
-                "group": "Assistants",
+                "group": "Agents",
                 "pages": [
                   "general/assistants/introduction",
                   {
-                    "group": "Create Assistant",
+                    "group": "Create Agent",
                     "icon": "head-side",
                     "pages": [
                       "general/assistants/createAssistant",
@@ -119,7 +119,7 @@
             ]
           },
           {
-            "group": "Assistants",
+            "group": "Agents",
             "pages": [
               "api-reference/assistants/get",
               "api-reference/assistants/create",
@@ -144,7 +144,7 @@
             ]
           },
           {
-            "group": "Tags",
+            "group": "Groups",
             "pages": [
               "api-reference/tags/get",
               "api-reference/tags/create",
